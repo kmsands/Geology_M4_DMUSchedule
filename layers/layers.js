@@ -1,9 +1,11 @@
+ol.proj.proj4.register(proj4);
+ol.proj.get("EPSG:7851").setExtent([493662.488775, 8072100.521459, 497223.679135, 8074279.838873]);
 var wms_layers = [];
 
 
         var lyr_GoogleSatellite_0 = new ol.layer.Tile({
             'title': 'Google Satellite',
-            'type': 'base',
+            //'type': 'base',
             'opacity': 0.600000,
             
             
@@ -12,73 +14,114 @@ var wms_layers = [];
                 url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
             })
         });
-var lyr_20240130_RGB_1 = new ol.layer.Image({
-                            opacity: 1,
-                            title: "20240130_RGB",
-                            
-                            
-                            source: new ol.source.ImageStatic({
-                               url: "./layers/20240130_RGB_1.png",
-    attributions: ' ',
-                                projection: 'EPSG:3857',
-                                alwaysInRange: true,
-                                imageExtent: [13686050.961985, -1973211.353674, 13695068.669474, -1969321.545041]
-                            })
-                        });
-var format_FutureMiningBlocks_2 = new ol.format.GeoJSON();
-var features_FutureMiningBlocks_2 = format_FutureMiningBlocks_2.readFeatures(json_FutureMiningBlocks_2, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_FutureMiningBlocks_2 = new ol.source.Vector({
+var format_DisturbanceOutline_1 = new ol.format.GeoJSON();
+var features_DisturbanceOutline_1 = format_DisturbanceOutline_1.readFeatures(json_DisturbanceOutline_1, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:7851'});
+var jsonSource_DisturbanceOutline_1 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_FutureMiningBlocks_2.addFeatures(features_FutureMiningBlocks_2);
-var lyr_FutureMiningBlocks_2 = new ol.layer.Vector({
-                declutter: true,
-                source:jsonSource_FutureMiningBlocks_2, 
-                style: style_FutureMiningBlocks_2,
+jsonSource_DisturbanceOutline_1.addFeatures(features_DisturbanceOutline_1);
+var lyr_DisturbanceOutline_1 = new ol.layer.Vector({
+                declutter: false,
+                source:jsonSource_DisturbanceOutline_1, 
+                style: style_DisturbanceOutline_1,
+                popuplayertitle: "Disturbance Outline",
                 interactive: true,
-                title: '<img src="styles/legend/FutureMiningBlocks_2.png" /> Future Mining Blocks'
+                title: '<img src="styles/legend/DisturbanceOutline_1.png" /> Disturbance Outline'
             });
-var format_DisturbanceOutline_3 = new ol.format.GeoJSON();
-var features_DisturbanceOutline_3 = format_DisturbanceOutline_3.readFeatures(json_DisturbanceOutline_3, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_DisturbanceOutline_3 = new ol.source.Vector({
+var format_dmu_mining_blocks_2 = new ol.format.GeoJSON();
+var features_dmu_mining_blocks_2 = format_dmu_mining_blocks_2.readFeatures(json_dmu_mining_blocks_2, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:7851'});
+var jsonSource_dmu_mining_blocks_2 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_DisturbanceOutline_3.addFeatures(features_DisturbanceOutline_3);
-var lyr_DisturbanceOutline_3 = new ol.layer.Vector({
-                declutter: true,
-                source:jsonSource_DisturbanceOutline_3, 
-                style: style_DisturbanceOutline_3,
+jsonSource_dmu_mining_blocks_2.addFeatures(features_dmu_mining_blocks_2);
+var lyr_dmu_mining_blocks_2 = new ol.layer.Vector({
+                declutter: false,
+                source:jsonSource_dmu_mining_blocks_2, 
+                style: style_dmu_mining_blocks_2,
+                popuplayertitle: "dmu_mining_blocks",
                 interactive: true,
-                title: '<img src="styles/legend/DisturbanceOutline_3.png" /> Disturbance Outline'
-            });
-var format_dmu_mining_blocks_4 = new ol.format.GeoJSON();
-var features_dmu_mining_blocks_4 = format_dmu_mining_blocks_4.readFeatures(json_dmu_mining_blocks_4, 
-            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_dmu_mining_blocks_4 = new ol.source.Vector({
-    attributions: ' ',
-});
-jsonSource_dmu_mining_blocks_4.addFeatures(features_dmu_mining_blocks_4);
-var lyr_dmu_mining_blocks_4 = new ol.layer.Vector({
-                declutter: true,
-                source:jsonSource_dmu_mining_blocks_4, 
-                style: style_dmu_mining_blocks_4,
-                interactive: true,
-                title: '<img src="styles/legend/dmu_mining_blocks_4.png" /> dmu_mining_blocks'
-            });
+    title: 'dmu_mining_blocks<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_0.png" /> 25/03/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_1.png" /> 29/03/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_2.png" /> 2/04/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_3.png" /> 25/04/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_4.png" /> 5/05/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_5.png" /> 25/05/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_6.png" /> 7/06/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_7.png" /> 25/06/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_8.png" /> 10/07/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_9.png" /> 25/07/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_10.png" /> 12/08/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_11.png" /> 2024-08-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_12.png" /> 14/09/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_13.png" /> 2024-09-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_14.png" /> 17/10/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_15.png" /> 2024-10-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_16.png" /> 17/11/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_17.png" /> 19/11/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_18.png" /> 2024-11-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_19.png" /> 20/12/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_20.png" /> 25/12/2024<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_21.png" /> 22/01/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_22.png" /> 24/01/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_23.png" /> 2025-01-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_24.png" /> 24/02/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_25.png" /> 2025-02-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_26.png" /> 26/02/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_27.png" /> 2025-03-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_28.png" /> 31/03/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_29.png" /> 2025-04-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_30.png" /> 3/05/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_31.png" /> 2025-05-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_32.png" /> 3/06/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_33.png" /> 5/06/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_34.png" /> 2025-06-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_35.png" /> 8/07/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_36.png" /> 2025-07-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_37.png" /> 2025-08-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_38.png" /> 10/09/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_39.png" /> 2025-09-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_40.png" /> 13/10/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_41.png" /> 2025-10-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_42.png" /> 15/11/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_43.png" /> 2025-11-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_44.png" /> 18/12/2025<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_45.png" /> 2025-12-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_46.png" /> 20/01/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_47.png" /> 2026-01-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_48.png" /> 22/02/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_49.png" /> 2026-02-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_50.png" /> 2026-03-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_51.png" /> 27/03/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_52.png" /> 2026-04-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_53.png" /> 29/04/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_54.png" /> 2026-05-25<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_55.png" /> 1/06/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_56.png" /> 4/07/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_57.png" /> 6/08/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_58.png" /> 8/09/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_59.png" /> 11/10/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_60.png" /> 13/11/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_61.png" /> 16/12/2026<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_62.png" /> 18/01/2027<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_63.png" /> 20/02/2027<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_64.png" /> 25/03/2027<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_65.png" /> 27/04/2027<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_66.png" /> 30/05/2027<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_67.png" /> 2/07/2027<br />\
+    <img src="styles/legend/dmu_mining_blocks_2_68.png" /> 4/07/2027<br />'
+        });
 
-lyr_GoogleSatellite_0.setVisible(true);lyr_20240130_RGB_1.setVisible(true);lyr_FutureMiningBlocks_2.setVisible(true);lyr_DisturbanceOutline_3.setVisible(true);lyr_dmu_mining_blocks_4.setVisible(true);
-var layersList = [lyr_GoogleSatellite_0,lyr_20240130_RGB_1,lyr_FutureMiningBlocks_2,lyr_DisturbanceOutline_3,lyr_dmu_mining_blocks_4];
-lyr_FutureMiningBlocks_2.set('fieldAliases', {'id': 'id', 'fid': 'fid', 'layer': 'layer', 'path': 'path', });
-lyr_DisturbanceOutline_3.set('fieldAliases', {'id': 'id', 'fid': 'fid', 'name': 'name', 'land use': 'land use', 'description': 'description', 'tenement': 'tenement', 'date cleared': 'date cleared', 'mrf category': 'mrf category', 'permit number': 'permit number', 'area (ha)': 'area (ha)', 'layer': 'layer', 'path': 'path', });
-lyr_dmu_mining_blocks_4.set('fieldAliases', {'id': 'id', 'block_id': 'block_id', 'finish_dat': 'finish_dat', 'Finish Date': 'Finish Date', 'Block Lable': 'Block Lable', });
-lyr_FutureMiningBlocks_2.set('fieldImages', {'id': 'TextEdit', 'fid': 'TextEdit', 'layer': 'TextEdit', 'path': 'TextEdit', });
-lyr_DisturbanceOutline_3.set('fieldImages', {'id': 'TextEdit', 'fid': 'TextEdit', 'name': 'TextEdit', 'land use': 'TextEdit', 'description': 'TextEdit', 'tenement': 'TextEdit', 'date cleared': 'DateTime', 'mrf category': 'TextEdit', 'permit number': 'TextEdit', 'area (ha)': 'TextEdit', 'layer': 'TextEdit', 'path': 'TextEdit', });
-lyr_dmu_mining_blocks_4.set('fieldImages', {'id': 'TextEdit', 'block_id': 'TextEdit', 'finish_dat': 'DateTime', 'Finish Date': 'TextEdit', 'Block Lable': 'TextEdit', });
-lyr_FutureMiningBlocks_2.set('fieldLabels', {'id': 'hidden field', 'fid': 'inline label - always visible', 'layer': 'hidden field', 'path': 'hidden field', });
-lyr_DisturbanceOutline_3.set('fieldLabels', {'id': 'no label', 'fid': 'no label', 'name': 'no label', 'land use': 'no label', 'description': 'no label', 'tenement': 'no label', 'date cleared': 'no label', 'mrf category': 'no label', 'permit number': 'no label', 'area (ha)': 'no label', 'layer': 'no label', 'path': 'no label', });
-lyr_dmu_mining_blocks_4.set('fieldLabels', {'id': 'hidden field', 'block_id': 'header label - always visible', 'finish_dat': 'hidden field', 'Finish Date': 'header label - always visible', 'Block Lable': 'hidden field', });
-lyr_dmu_mining_blocks_4.on('precompose', function(evt) {
+lyr_GoogleSatellite_0.setVisible(true);lyr_DisturbanceOutline_1.setVisible(true);lyr_dmu_mining_blocks_2.setVisible(true);
+var layersList = [lyr_GoogleSatellite_0,lyr_DisturbanceOutline_1,lyr_dmu_mining_blocks_2];
+lyr_DisturbanceOutline_1.set('fieldAliases', {'fid': 'fid', 'Name': 'Name', 'Area (ha)': 'Area (ha)', });
+lyr_dmu_mining_blocks_2.set('fieldAliases', {'id': 'id', 'block_number': 'block_number', 'layer': 'layer', 'path': 'path', 'date': 'date', 'label': 'label', });
+lyr_DisturbanceOutline_1.set('fieldImages', {'fid': 'TextEdit', 'Name': 'TextEdit', 'Area (ha)': 'TextEdit', });
+lyr_dmu_mining_blocks_2.set('fieldImages', {'id': 'TextEdit', 'block_number': 'TextEdit', 'layer': 'TextEdit', 'path': 'TextEdit', 'date': 'DateTime', 'label': 'TextEdit', });
+lyr_DisturbanceOutline_1.set('fieldLabels', {'fid': 'no label', 'Name': 'no label', 'Area (ha)': 'no label', });
+lyr_dmu_mining_blocks_2.set('fieldLabels', {'id': 'no label', 'block_number': 'no label', 'layer': 'no label', 'path': 'no label', 'date': 'no label', 'label': 'no label', });
+lyr_dmu_mining_blocks_2.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
