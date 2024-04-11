@@ -1,5 +1,5 @@
 ol.proj.proj4.register(proj4);
-ol.proj.get("EPSG:7851").setExtent([493662.488775, 8072100.521459, 497223.679135, 8074279.838873]);
+ol.proj.get("EPSG:7851").setExtent([493266.497516, 8072100.521459, 497619.670394, 8074279.838873]);
 var wms_layers = [];
 
 
@@ -26,7 +26,7 @@ var lyr_DisturbanceOutline_1 = new ol.layer.Vector({
                 source:jsonSource_DisturbanceOutline_1, 
                 style: style_DisturbanceOutline_1,
                 popuplayertitle: "Disturbance Outline",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/DisturbanceOutline_1.png" /> Disturbance Outline'
             });
 var format_dmu_mining_blocks_2 = new ol.format.GeoJSON();
@@ -41,7 +41,7 @@ var lyr_dmu_mining_blocks_2 = new ol.layer.Vector({
                 source:jsonSource_dmu_mining_blocks_2, 
                 style: style_dmu_mining_blocks_2,
                 popuplayertitle: "dmu_mining_blocks",
-                interactive: true,
+                interactive: false,
     title: 'dmu_mining_blocks<br />\
     <img src="styles/legend/dmu_mining_blocks_2_0.png" /> 25/03/2024<br />\
     <img src="styles/legend/dmu_mining_blocks_2_1.png" /> 29/03/2024<br />\

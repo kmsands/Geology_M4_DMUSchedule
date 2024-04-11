@@ -564,13 +564,13 @@ var style_dmu_mining_blocks_2 = function(feature, resolution){
     var value = feature.get("date");
     var labelText = "";
     size = 0;
-    var labelFont = "14.3px \'Arial\', sans-serif";
+    var labelFont = "12.3px \'Arial\', sans-serif";
     var labelFill = "#ffffff";
     var bufferColor = "#000000";
-    var bufferWidth = 3.0;
+    var bufferWidth = 2;
     var textAlign = "center";
-    var offsetX = 0;
-    var offsetY = 0;
+    var offsetX = 1;
+    var offsetY = 1;
     var placement = 'point';
     if (feature.get("label") !== null) {
         labelText = String(feature.get("label"));
