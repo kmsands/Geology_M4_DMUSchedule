@@ -83,7 +83,7 @@ var map = new ol.Map({
     view: new ol.View({
          maxZoom: 28, minZoom: 1, projection: new ol.proj.Projection({
             code: 'EPSG:7851',
-            extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
+            //extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
             units: 'm'})
     })
 });
@@ -91,7 +91,9 @@ var map = new ol.Map({
 var layerSwitcher = new ol.control.LayerSwitcher({tipLabel: "Layers"});
 map.addControl(layerSwitcher);
 
-map.getView().fit([493266.497516, 8072100.521459, 497619.670394, 8074279.838873], map.getSize());
+
+//initial view - epsg:3857 coordinates if not "Match project CRS"
+map.getView().fit([491438.907379, 8068827.092641, 500345.629204, 8078117.046354], map.getSize());
 
 var NO_POPUP = 0
 var ALL_FIELDS = 1
@@ -162,10 +164,20 @@ function createPopupField(currentFeature, currentFeatureKeys, layer) {
                 popupField += '<strong>' + layer.get('fieldAliases')[currentFeatureKeys[i]] + '</strong><br />';
             }
             if (layer.get('fieldImages')[currentFeatureKeys[i]] != "ExternalResource") {
-                popupField += (currentFeature.get(currentFeatureKeys[i]) != null ? autolinker.link(currentFeature.get(currentFeatureKeys[i]).toLocaleString()) + '</td>' : '');
-            } else {
-                popupField += (currentFeature.get(currentFeatureKeys[i]) != null ? '<img src="images/' + currentFeature.get(currentFeatureKeys[i]).replace(/[\\\/:]/g, '_').trim() + '" /></td>' : '');
-            }
+				popupField += (currentFeature.get(currentFeatureKeys[i]) != null ? autolinker.link(currentFeature.get(currentFeatureKeys[i]).toLocaleString()) + '</td>' : '');
+			} else {
+				var fieldValue = currentFeature.get(currentFeatureKeys[i]);
+				if (/\.(gif|jpg|jpeg|tif|tiff|png|avif|webp|svg)$/i.test(fieldValue)) {
+					// Se il valore è un'immagine, visualizzalo come immagine
+					popupField += (fieldValue != null ? '<img src="images/' + fieldValue.replace(/[\\\/:]/g, '_').trim() + '" /></td>' : '');
+				} else if (/\.(mp4|webm|ogg|avi|mov|flv)$/i.test(fieldValue)) {
+					// Se il valore è un video, visualizzalo come video
+					popupField += (fieldValue != null ? '<video controls><source src="images/' + fieldValue.replace(/[\\\/:]/g, '_').trim() + '" type="video/mp4">Il tuo browser non supporta il tag video.</video></td>' : '');
+				} else {
+					// Altrimenti, mostra il valore come testo
+					popupField += (fieldValue != null ? autolinker.link(fieldValue.toLocaleString()) + '</td>' : '');
+				}
+			}
             popupText += '<tr>' + popupField + '</tr>';
         }
     }
