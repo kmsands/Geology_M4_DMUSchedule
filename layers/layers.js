@@ -1,22 +1,9 @@
 ol.proj.proj4.register(proj4);
-//ol.proj.get("EPSG:7851").setExtent([491438.907379, 8068827.092641, 500345.629204, 8078117.046354]);
+//ol.proj.get("EPSG:7851").setExtent([491914.850067, 8069394.299050, 499869.686515, 8077549.839945]);
 var wms_layers = [];
 
-var lyr_SiteImageMay2024_0 = new ol.layer.Image({
-                            opacity: 1,
-                            title: "Site Image May 2024",
-                            
-                            
-                            source: new ol.source.ImageStatic({
-                               url: "./layers/SiteImageMay2024_0.png",
-    attributions: ' ',
-                                projection: 'EPSG:3857',
-                                alwaysInRange: true,
-                                imageExtent: [13686318.745659, -1973799.047661, 13690974.580305, -1969212.879783]
-                            })
-                        });
 
-        var lyr_GoogleSatellite_1 = new ol.layer.Tile({
+        var lyr_GoogleSatellite_0 = new ol.layer.Tile({
             'title': 'Google Satellite',
             //'type': 'base',
             'opacity': 0.600000,
@@ -27,6 +14,19 @@ var lyr_SiteImageMay2024_0 = new ol.layer.Image({
                 url: 'https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
             })
         });
+var lyr_240525_Site_composite_1 = new ol.layer.Image({
+                            opacity: 1,
+                            title: "240525_Site_composite",
+                            
+                            
+                            source: new ol.source.ImageStatic({
+                               url: "./layers/240525_Site_composite_1.png",
+    attributions: ' ',
+                                projection: 'EPSG:3857',
+                                alwaysInRange: true,
+                                imageExtent: [13686318.745659, -1973799.047665, 13690974.632713, -1969212.879783]
+                            })
+                        });
 var format_dmu_mining_blocks_2 = new ol.format.GeoJSON();
 var features_dmu_mining_blocks_2 = format_dmu_mining_blocks_2.readFeatures(json_dmu_mining_blocks_2, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:7851'});
@@ -112,11 +112,11 @@ var lyr_dmu_mining_blocks_2 = new ol.layer.Vector({
     <img src="styles/legend/dmu_mining_blocks_2_68.png" /> 4/07/2027<br />'
         });
 
-lyr_SiteImageMay2024_0.setVisible(true);lyr_GoogleSatellite_1.setVisible(true);lyr_dmu_mining_blocks_2.setVisible(true);
-var layersList = [lyr_SiteImageMay2024_0,lyr_GoogleSatellite_1,lyr_dmu_mining_blocks_2];
+lyr_GoogleSatellite_0.setVisible(true);lyr_240525_Site_composite_1.setVisible(true);lyr_dmu_mining_blocks_2.setVisible(true);
+var layersList = [lyr_GoogleSatellite_0,lyr_240525_Site_composite_1,lyr_dmu_mining_blocks_2];
 lyr_dmu_mining_blocks_2.set('fieldAliases', {'id': 'id', 'block_number': 'block_number', 'layer': 'layer', 'date': 'date', 'label': 'label', });
 lyr_dmu_mining_blocks_2.set('fieldImages', {'id': 'TextEdit', 'block_number': 'TextEdit', 'layer': 'TextEdit', 'date': 'DateTime', 'label': 'TextEdit', });
-lyr_dmu_mining_blocks_2.set('fieldLabels', {'id': 'no label', 'block_number': 'no label', 'layer': 'no label', 'date': 'no label', 'label': 'no label', });
+lyr_dmu_mining_blocks_2.set('fieldLabels', {'id': 'hidden field', 'block_number': 'hidden field', 'layer': 'hidden field', 'date': 'hidden field', 'label': 'hidden field', });
 lyr_dmu_mining_blocks_2.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
